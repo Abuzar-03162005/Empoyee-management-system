@@ -26,8 +26,32 @@ body {
   color: #fff;
 }
 #TaskList::-webkit-scrollbar {
-  display: none; 
+  display: none;
 }
-.employeeheaderbutn:hover{
+.employeeheaderbutn:hover {
   text-decoration: dotted;
+}
+html::-webkit-scrollbar {
+  width: 10px;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 10px;
+  transition: all ease;
+  transition-duration: 1s;
+}
+html::-webkit-scrollbar-thumb:hover {
+  background-color: #a3a3a3;
+  border-radius: 3rem;
+}
+.alltasks::-webkit-scrollbar {
+  width: 8px;
+}
+.alltasks::-webkit-scrollbar-thumb {
+  background-color: #a3a3a3;
+  border-radius: 3rem;
+}
+.imageStatus{
+  filter: invert();
 }
