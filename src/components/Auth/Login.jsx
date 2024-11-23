@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Login = () => {
+const Login = ({handleLogin}) => {
   // two-way binding
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -8,6 +8,7 @@ const Login = () => {
   // handling the form
   const submitHandler = (e) => {
     e.preventDefault();
+    handleLogin(email , password)
     setEmail("");
     setPassword("");
 
@@ -18,7 +19,7 @@ const Login = () => {
   return (
     <div className="w-screen h-screen flex justify-center items-center text-gray-300">
       <div className="flex-col justify-evenly items-center gap-y-10 w-1/4">
-        <h1 className="text-[3rem] text-red-900 font-black text-center mb-8 drop-shadow-[0_0_30px_rgba(220,38,38,1)] font-['Gilroy']">
+        <h1 className="text-[3rem] text-red-800 font-black text-center mb-8 drop-shadow-[0_0_30px_rgba(255,38,38,1)] font-['Gilroy']">
           Log-In
         </h1>
         <form
