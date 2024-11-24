@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-const Login = ({handleLogin}) => {
+// eslint-disable-next-line react/prop-types
+const Login = ({ handleLogin }) => {
   // two-way binding
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -8,7 +9,7 @@ const Login = ({handleLogin}) => {
   // handling the form
   const submitHandler = (e) => {
     e.preventDefault();
-    handleLogin(email , password)
+    handleLogin(email, password);
     setEmail("");
     setPassword("");
 

@@ -1,28 +1,51 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import Login from "./components/Auth/Login";
 import AdminDashboard from "./components/Dashboard/AdminDashboard";
 import EmployeeDashboard from "./components/Dashboard/EmployeeDashboard";
+import toast, { Toaster } from "react-hot-toast";
 
 const App = () => {
   const [user, setUser] = useState(null);
 
   // handling the login page
-  const hanldeLogin = (email, password) => {
+  
+  const handleLogin = (email, password) => {
     if (email == "admin@me.com" && password == "123") {
-      setUser("admin")
-      console.log("this is admin");
+      setUser("admin");
+      console.log(user);
     } else if (email == "user@me.com" && password == "123") {
-      setUser("employee")
-      console.log("this is user");  
+      setUser("employee");
+      console.log(user);
     } else {
-      alert("Invalid Cridentials❗");
+
+      // showing the error message for wrong credentials with toast
+      
+      toast("Invalid Cridentials", {
+        icon: "❌",
+        style: {
+          borderRadius: "3rem",
+          background: "#222",
+          color: "#fff",
+        },
+      });
     }
   };
   return (
     <>
-      {!user ? <Login handleLogin={hanldeLogin} /> : ""}
-      {user == "admin" ? <AdminDashboard /> : ""}
-      {user == "employee" ? <EmployeeDashboard /> : ""}
+      <Toaster />
+
+      {/* doing the conditional rendering based on the user state */}
+      
+      {!user ? (
+        <Login handleLogin={handleLogin} />
+      ) : user == "admin" ? (
+        <AdminDashboard />
+      ) : user == "employee" ? (
+        <EmployeeDashboard />
+      ) : (
+        ""
+      )}
     </>
   );
 };
