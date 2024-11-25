@@ -201,9 +201,8 @@ export const setLocalStorage = () => {
 };
 
 export const getLocalStorage = () => {
-  // converting the data from string to object by using parse methode 
+  // converting the data from string to object by using parse methode
   const employees = JSON.parse(localStorage.getItem("EMPLOYEES"));
   const admin = JSON.parse(localStorage.getItem("ADMIN"));
-  // console.log(employees);
-  // console.log(admin);
+  return { employees, admin };
 };

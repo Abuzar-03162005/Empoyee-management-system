@@ -1,15 +1,16 @@
 /* eslint-disable no-unused-vars */
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Login from "./components/Auth/Login";
 import AdminDashboard from "./components/Dashboard/AdminDashboard";
 import EmployeeDashboard from "./components/Dashboard/EmployeeDashboard";
 import toast, { Toaster } from "react-hot-toast";
+import { AuthContext } from "./context/AuthProvider";
 
 const App = () => {
   const [user, setUser] = useState(null);
-
+  const data = useContext(AuthContext);
   // handling the login page
-  
+
   const handleLogin = (email, password) => {
     if (email == "admin@me.com" && password == "123") {
       setUser("admin");
@@ -18,10 +19,9 @@ const App = () => {
       setUser("employee");
       console.log(user);
     } else {
-
       // showing the error message for wrong credentials with toast
-      
-      toast("Invalid Cridentials", {
+
+      toast("Invalid Credentials", {
         icon: "❌",
         style: {
           borderRadius: "3rem",
@@ -31,12 +31,13 @@ const App = () => {
       });
     }
   };
+
   return (
     <>
       <Toaster />
 
       {/* doing the conditional rendering based on the user state */}
-      
+
       {!user ? (
         <Login handleLogin={handleLogin} />
       ) : user == "admin" ? (
