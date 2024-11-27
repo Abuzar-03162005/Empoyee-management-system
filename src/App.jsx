@@ -9,14 +9,13 @@ import { AuthContext } from "./context/AuthProvider";
 const App = () => {
   const [user, setUser] = useState(null);
   const authData = useContext(AuthContext);
-  console.log(authData);
-  // handling the login page
+  // handling the login page 
 
   const handleLogin = (email, password) => {
     if (email == "admin@me.com" && password == "123") {
       setUser("admin");
       console.log(user);
-    } else if (email == "user@me.com" && password == "123") {
+    } else if (authData && authData.employees.find((e)=> email == e.email && password == e.password)) {
       setUser("employee");
       console.log(user);
     } else {

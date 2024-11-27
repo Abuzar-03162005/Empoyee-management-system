@@ -8,7 +8,7 @@ const TaskList = () => {
       className="flex justify-start items-center overflow-x-auto gap-5 flex-nowrap h-[59%] w-full mt-7 py-4"
     >
       {/* Single Card  */}
-      <div className="flex-shrink-0 p-5 h-full w-[24%] bg-yellow-600 rounded-xl ">
+      <div className="singleEmployeeCard flex-shrink-0 p-5 h-full w-[24%] bg-yellow-600 rounded-xl overflow-auto">
         
         {/*--------------- Priority ___AND___ Date ---------------*/}
         
