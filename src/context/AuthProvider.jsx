@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { createContext, useEffect, useState } from "react";
@@ -8,15 +9,15 @@ export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const [userData, setUserData] = useState(null);
-  const { employees, admin } = getLocalStorage();
   useEffect(() => {
+    const { employees, admin } = getLocalStorage();
     setUserData({ employees, admin });
   }, []);
   // console.log(userData);
 
   return (
     <div>
-      <AuthContext.Provider value={"abuzar"}>{children}</AuthContext.Provider>
+      <AuthContext.Provider value={userData}>{children}</AuthContext.Provider>
     </div>
   );
 };

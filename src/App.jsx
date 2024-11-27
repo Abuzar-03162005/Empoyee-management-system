@@ -8,7 +8,8 @@ import { AuthContext } from "./context/AuthProvider";
 
 const App = () => {
   const [user, setUser] = useState(null);
-  const data = useContext(AuthContext);
+  const authData = useContext(AuthContext);
+  console.log(authData);
   // handling the login page
 
   const handleLogin = (email, password) => {
