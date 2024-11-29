@@ -12,9 +12,6 @@ const Login = ({ handleLogin }) => {
     handleLogin(email, password);
     setEmail("");
     setPassword("");
-
-    // checking if the form works as expected
-    // console.log(`Email is ${email} Password is ${password}`);
   };
 
   return (
