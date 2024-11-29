@@ -1,6 +1,8 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import React from "react";
 
-const EmployeeHeader = () => {
+const EmployeeHeader = ({data}) => {
   return (
     <div className="flex justify-between items-end text-xl">
       <h2 className="font-light tracking-[0.4rem]">

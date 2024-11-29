@@ -1,6 +1,7 @@
 const employees = [
   {
     id: "101",
+    name: "John Doe",
     email: "john.doe@example.com",
     password: "123",
     tasks: [
@@ -38,6 +39,7 @@ const employees = [
   },
   {
     id: "102",
+    name: "Jane Smith",
     email: "jane.smith@example.com",
     password: "123",
     tasks: [
@@ -75,6 +77,7 @@ const employees = [
   },
   {
     id: "103",
+    name: "Emily Jones",
     email: "emily.jones@example.com",
     password: "123",
     tasks: [
@@ -112,6 +115,7 @@ const employees = [
   },
   {
     id: "104",
+    name: "Michael Brown",
     email: "michael.brown@example.com",
     password: "123",
     tasks: [
@@ -149,6 +153,7 @@ const employees = [
   },
   {
     id: "105",
+    name: "Sarah Davis",
     email: "sarah.davis@example.com",
     password: "123",
     tasks: [
@@ -189,10 +194,12 @@ const employees = [
 const admin = [
   {
     id: "1",
+    name: "Admin User",
     email: "admin@example.com",
     password: "123",
   },
 ];
+
 
 export const setLocalStorage = () => {
   // you cant just pass the data directly but you have to first convert it in string by using stringfy methode

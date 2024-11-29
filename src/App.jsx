@@ -31,6 +31,7 @@ const App = () => {
       ); // find the employee in the employees array
       if (employee) {
         setUser("employee"); // change to employee
+        setLoggedInUserData(employee); // set the logged in user data to get the employee data
         localStorage.setItem(
           "loggedInUser",
           JSON.stringify({ role: "employee" })
@@ -48,7 +49,7 @@ const App = () => {
       }); // toast
     }
   };
-  console.log("use has been updated "); // log the user
+  // console.log("use has been updated "); // log the user
   return (
     <>
       <Toaster /> {/* toaster for showing the toast */}
@@ -58,7 +59,7 @@ const App = () => {
       ) : user == "admin" ? (
         <AdminDashboard />
       ) : user == "employee" ? (
-        <EmployeeDashboard />
+        <EmployeeDashboard employeeData={loggedInUserData} />
       ) : (
         ""
       )}
