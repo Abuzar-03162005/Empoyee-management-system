@@ -1,6 +1,6 @@
 import React from "react";
 
-const ShowTaskNumbers = () => {
+const ShowTaskNumbers = ({data}) => {
   return (
     <>
       <div className="flex justify-between w-full gap-4 mt-14">

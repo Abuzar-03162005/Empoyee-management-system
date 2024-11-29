@@ -52,8 +52,7 @@ const App = () => {
   // console.log("use has been updated "); // log the user
   return (
     <>
-      <Toaster /> {/* toaster for showing the toast */}
-      {/* doing the conditional rendering based on the user state */}
+      <Toaster />
       {!user ? (
         <Login handleLogin={handleLogin} />
       ) : user == "admin" ? (
