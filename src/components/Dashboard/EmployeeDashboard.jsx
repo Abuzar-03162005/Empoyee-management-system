@@ -5,8 +5,8 @@ import EmployeeHeader from "../Other/EmployeeHeader";
 import ShowTaskNumbers from "../Other/ShowTaskNumbers";
 import TaskList from "../TaskList/TaskList";
 
-const EmployeeDashboard = ({ employeeData }) => {
-  console.log(employeeData); 
+const EmployeeDashboard = ({ employeeData }) => { 
+  console.log(employeeData);
   return (
     <div className="p-10 bg-[#1c1c1c] h-screen flex-col gap-x-8">
       {/* header for the employee dashboard */}

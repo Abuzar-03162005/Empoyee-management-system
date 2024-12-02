@@ -26,11 +26,8 @@ const App = () => {
           JSON.stringify({ role: "employee" })
         );
       }
-    } else {
-      console.log("working");
     }
   };
-
   return (
     <>
       {/* doing the conditional rendering based on the user state */}
@@ -41,7 +38,7 @@ const App = () => {
       ) : user == "employee" ? (
         <EmployeeDashboard employeeData={loggedInUserData} />
       ) : (
-        null
+        ""
       )}
     </>
   );
