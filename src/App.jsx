@@ -34,14 +34,14 @@ const App = () => {
   return (
     <>
       {/* doing the conditional rendering based on the user state */}
-      {!user.role ? (
+      {!user ? (
         <Login handleLogin={handleLogin} />
-      ) : user.role == "admin" ? (
+      ) : user == "admin" ? (
         <AdminDashboard />
-      ) : user.role == "employee" ? (
+      ) : user == "employee" ? (
         <EmployeeDashboard employeeData={loggedInUserData} />
       ) : (
-        ""
+        null
       )}
     </>
   );
