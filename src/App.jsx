@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Login from "./components/Auth/Login";
 import AdminDashboard from "./components/Dashboard/AdminDashboard";
 import EmployeeDashboard from "./components/Dashboard/EmployeeDashboard";
@@ -8,6 +8,11 @@ const App = () => {
   const [user, setUser] = useState(null);
   const [loggedInUserData, setLoggedInUserData] = useState(null);
   const authData = useContext(AuthContext);
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("loggedInUser");
+    console.log(loggedInUser);
+  });
 
   // handling the login page
   const handleLogin = (email, password) => {
@@ -25,9 +30,14 @@ const App = () => {
           "loggedInUser",
           JSON.stringify({ role: "employee" })
         );
+      } else {
+        console.log("Invalid credentials: No matching employee found."); // Specific for employee not found
       }
+    } else {
+      console.log("Invalid credentials: authData is not available."); // Specific for authData being null or undefined
     }
   };
+
   return (
     <>
       {/* doing the conditional rendering based on the user state */}
