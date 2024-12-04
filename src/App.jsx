@@ -3,6 +3,7 @@ import Login from "./components/Auth/Login";
 import AdminDashboard from "./components/Dashboard/AdminDashboard";
 import EmployeeDashboard from "./components/Dashboard/EmployeeDashboard";
 import { AuthContext } from "./context/AuthProvider";
+import { setLocalStorage } from "./utils/LocalStorage";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -33,6 +34,7 @@ const App = () => {
     }
   };
 
+  
   useEffect(() => {
     const loggedInUser = localStorage.getItem("loggedInUser");
     if (loggedInUser) {
