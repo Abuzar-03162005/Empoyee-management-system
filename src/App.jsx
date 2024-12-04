@@ -9,11 +9,6 @@ const App = () => {
   const [loggedInUserData, setLoggedInUserData] = useState(null);
   const authData = useContext(AuthContext);
 
-  useEffect(() => {
-    const loggedInUser = localStorage.getItem("loggedInUser");
-    console.log(loggedInUser);
-  });
-
   // handling the login page
   const handleLogin = (email, password) => {
     if (email === "admin@me.com" && password === "123") {
@@ -28,15 +23,24 @@ const App = () => {
         setLoggedInUserData(employee); // set the logged in user data to get the employee data
         localStorage.setItem(
           "loggedInUser",
-          JSON.stringify({ role: "employee" })
+          JSON.stringify({ role: "employee", data: employee })
         );
       } else {
         console.log("Invalid credentials: No matching employee found."); // Specific for employee not found
       }
     } else {
-      console.log("Invalid credentials: authData is not available."); // Specific for authData being null or undefined
+      alert("Invalid credentials: authData is not available."); // Specific for authData being null or undefined
     }
   };
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("loggedInUser");
+    if (loggedInUser) {
+      const userdata = JSON.parse(loggedInUser);
+      setUser(userdata.role);
+      setLoggedInUserData(userdata.data);
+    }
+  }, []);
 
   return (
     <>
