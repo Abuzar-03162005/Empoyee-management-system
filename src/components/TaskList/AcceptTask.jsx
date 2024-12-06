@@ -1,30 +1,28 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React from "react";
 
-const AcceptTask = () => {
+const AcceptTask = ({ data }) => {
+  console.log(data);
+
   return (
-    <div className="singleEmployeeCard flex-shrink-0 p-5 h-full w-[24%] bg-blue-600 rounded-xl overflow-auto">
+    <div className="singleEmployeeCard flex-shrink-0 p-5 h-full w-[24%] bg-green-700 rounded-xl overflow-auto">
       {/*--------------- Priority ___AND___ Date ---------------*/}
 
       <div className="flex justify-between items-center">
-        <h2 className="px-3 py-1 bg-red-700 rounded-md font-medium">High</h2>
-        <h4 className="text-black font-semibold">20 Feb 2023</h4>
+        <h2 className="px-3 py-1 bg-[#1c1c1c] rounded-md font-medium">
+          {data.category}
+        </h2>
+        <h4 className="text-[#1c1c1c] font-semibold">{data.taskDate}</h4>
       </div>
 
       {/*--------------- Title ___AND___ Description ----------------*/}
 
       <div className=" flex flex-col justify-center gap-5 items-start mt-4 ">
-        <h2 className="text-2xl font-bold">
-          <span className="font-bold font-serif text-black">Task : </span>
-          Complete The Project
-        </h2>
+        <h2 className="text-2xl font-bold">{data.taskTitle}</h2>
         <div>
           <p id="para" className="text-[1.09rem]">
-            <span className="font-bold font-serif text-xl text-black">
-              Discription :{" "}
-            </span>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi
-            aspernatur corrupti reiciendis autem iure error sequi laborum?
+            {data.taskDescription}
           </p>
         </div>
         <div className="flex flex-col justify-center items-stretch gap-2 w-full">

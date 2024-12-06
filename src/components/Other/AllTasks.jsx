@@ -1,15 +1,34 @@
-import React from "react";
+/* eslint-disable no-undef */
+/* eslint-disable react-hooks/rules-of-hooks */
+/* eslint-disable no-unused-vars */
+import React, { useContext } from "react";
+
+const authData = useContext(AuthContext)
 
 const AllTasks = () => {
   return (
     <div className="alltasks bg-[#1c1c1c] px-5 pb-5 mt-5 rounded-lg h-80 overflow-auto">
       <div className="flex justify-between items-center py-8 px-1  sticky top-0 bg-[#1c1c1c] h-10 text-xl font-semibold">
-        <h3 className="text-start">
+        <h3 className="text-end flex gap-2">
           {" "}
-          EMPLOYEE <span className="text-[1.5rem]">👩🏻‍💻</span>
+          EMPLOYEE
+          <img
+            src="/employee.png"
+            className="imageStatus"
+            alt="img"
+            width={28}
+            height={20}
+          />
         </h3>
-        <h3 className="">
-          TASK <span className="text-[1.5rem]">⚒️</span>
+        <h3 className="text-end flex gap-2">
+          TASK{" "}
+          <img
+            src="/Task.png"
+            className="imageStatus"
+            alt="img"
+            width={28}
+            height={20}
+          />
         </h3>
         <h3 className="text-end flex gap-2">
           STATUS

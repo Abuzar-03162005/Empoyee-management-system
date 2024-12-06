@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useContext, useEffect, useState } from "react";
 import Login from "./components/Auth/Login";
 import AdminDashboard from "./components/Dashboard/AdminDashboard";
@@ -33,7 +34,6 @@ const App = () => {
       alert("Invalid credentials: authData is not available."); // Specific for authData being null or undefined
     }
   };
-
   
   useEffect(() => {
     const loggedInUser = localStorage.getItem("loggedInUser");
