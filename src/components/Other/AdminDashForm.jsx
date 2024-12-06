@@ -47,7 +47,9 @@ const AdminDashForm = () => {
         </div>
         {/* div no 2 contains the description field and button for a better UI experience */}
         <div className="flex flex-col justify-start w-1/2">
-          <h3>Description</h3>
+          <h3 className="text-sm text-gray-300 mb-0.5 font-medium">
+            Description
+          </h3>
           <textarea
             className="w-full h-60 text-base py-2 px-4 rounded-lg outline-none bg-transparent border-[2px] border-gray-500 "
             name=""
