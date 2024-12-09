@@ -6,10 +6,22 @@ const AdminDashForm = () => {
   const [taskDate, setTaskDate] = useState("");
   const [assignTo, setAssignTo] = useState("");
   const [category, setCategory] = useState("");
-  const [description, setDescription] = useState("");
+  const [description, setDescription] = useState(""); 
+  const [task, setTask] = useState([]); 
 
   const submitHandler = (e) => {
     e.preventDefault();
+    setTitle("");
+    setTaskDate("");
+    setAssignTo("");
+    setCategory("");
+    setDescription("");
+
+    // console.log(title)
+    // console.log(taskDate)
+    // console.log(assignTo)
+    // console.log(category)
+    // console.log(description)
   };
   return (
     <div className="p-5 bg-[#1c1c1c] rounded-2xl mt-7">
