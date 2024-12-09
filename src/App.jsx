@@ -31,10 +31,10 @@ const App = () => {
         console.log("Invalid credentials: No matching employee found."); // Specific for employee not found
       }
     } else {
-      alert("Invalid credentials: authData is not available."); // Specific for authData being null or undefined
+      ("");
     }
   };
-  
+
   useEffect(() => {
     const loggedInUser = localStorage.getItem("loggedInUser");
     if (loggedInUser) {
