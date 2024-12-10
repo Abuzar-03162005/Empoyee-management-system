@@ -5,6 +5,7 @@ import AdminDashboard from "./components/Dashboard/AdminDashboard";
 import EmployeeDashboard from "./components/Dashboard/EmployeeDashboard";
 import { AuthContext } from "./context/AuthProvider";
 import { setLocalStorage } from "./utils/LocalStorage";
+import toast, { Toaster } from "react-hot-toast";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -14,24 +15,22 @@ const App = () => {
   // handling the login page
   const handleLogin = (email, password) => {
     if (email === "admin@me.com" && password === "123") {
-      setUser("admin"); // set the user to admin
+      setUser("admin"); // Set the user to admin
       localStorage.setItem("loggedInUser", JSON.stringify({ role: "admin" }));
     } else if (authData) {
       const employee = authData.employees.find(
         (e) => email === e.email && password === e.password
-      ); // find the employee in the employees array
+      ); // Find the employee in the employees array
       if (employee) {
-        setUser("employee"); // change to employee
-        setLoggedInUserData(employee); // set the logged in user data to get the employee data
+        setUser("employee"); // Set the user to employee
+        setLoggedInUserData(employee); // Set the logged-in user data
         localStorage.setItem(
           "loggedInUser",
           JSON.stringify({ role: "employee", data: employee })
         );
       } else {
-        console.log("Invalid credentials: No matching employee found."); // Specific for employee not found
+        toast.error("Invalid Credentials ☹️");
       }
-    } else {
-      ("");
     }
   };
 
@@ -46,9 +45,10 @@ const App = () => {
 
   return (
     <>
+      <Toaster />
       {/* doing the conditional rendering based on the user state */}
       {!user ? (
-        <Login handleLogin={handleLogin} />
+        <Login handleLogin={handleLogin}  />
       ) : user == "admin" ? (
         <AdminDashboard />
       ) : user == "employee" ? (

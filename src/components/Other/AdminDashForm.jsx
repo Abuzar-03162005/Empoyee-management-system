@@ -1,30 +1,48 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 const AdminDashForm = () => {
   const [title, setTitle] = useState("");
   const [taskDate, setTaskDate] = useState("");
   const [assignTo, setAssignTo] = useState("");
   const [category, setCategory] = useState("");
-  const [description, setDescription] = useState(""); 
-  const [task, setTask] = useState([]); 
+  const [description, setDescription] = useState("");
+  const [newTask, setNewTask] = useState([]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    setTitle("");
-    setTaskDate("");
-    setAssignTo("");
-    setCategory("");
-    setDescription("");
+    setNewTask({
+      active: false,
+      newTask: true,
+      failed: false,
+      completed: false,
+      title,
+      taskDate,
+      assignTo,
+      category,
+      description,
+    });
+    // finding the employee from assigning form
+    const data = JSON.parse(localStorage.getItem("EMPLOYEES"));
 
-    // console.log(title)
-    // console.log(taskDate)
-    // console.log(assignTo)
-    // console.log(category)
-    // console.log(description)
+    data.forEach((elem) => {
+      if (assignTo == elem.firstName) {
+        elem.tasks.push(newTask);
+        console.log(elem);
+        // setting the form empty after the submittion of data
+        setTitle("");
+        setTaskDate("");
+        setAssignTo("");
+        setCategory("");
+        setDescription("");
+      }
+    });
   };
   return (
     <div className="p-5 bg-[#1c1c1c] rounded-2xl mt-7">
+      <Toaster />
       <form
         onSubmit={(e) => {
           submitHandler(e);
@@ -39,8 +57,8 @@ const AdminDashForm = () => {
               Task Title
             </h3>
             <input
-              required
-              className="text-white bg-transparent w-4/5 rounded-lg outline-none px-1 py-2 border-[2px] border-gray-500 mb-5"
+              // required
+              className="text-white bg-transparent w-4/5 rounded-lg outline-none px-1 py-2 border-[2px] border-stone-600 mb-5"
               type="text"
               placeholder="Make a UI for the dashboard"
               onChange={(e) => setTitle(e.target.value)}
@@ -50,8 +68,8 @@ const AdminDashForm = () => {
           <div>
             <h3 className="text-sm text-gray-300 mb-0.5 font-medium">Date</h3>
             <input
-              required
-              className="text-white bg-transparent w-4/5 rounded-lg outline-none px-1 py-2 border-[2px] border-gray-500 mb-5"
+              // required
+              className="text-white bg-transparent w-4/5 rounded-lg outline-none px-1 py-2 border-[2px] border-stone-600 mb-5"
               type="date"
               onChange={(e) => setTaskDate(e.target.value)}
               value={taskDate}
@@ -62,8 +80,8 @@ const AdminDashForm = () => {
               Assign To
             </h3>
             <input
-              required
-              className="text-white bg-transparent w-4/5 rounded-lg outline-none px-1 py-2 border-[2px] border-gray-500 mb-5"
+              // required
+              className="text-white bg-transparent w-4/5 rounded-lg outline-none px-1 py-2 border-[2px] border-stone-600 mb-5"
               type="text"
               placeholder="Employee Name"
               onChange={(e) => setAssignTo(e.target.value)}
@@ -75,8 +93,8 @@ const AdminDashForm = () => {
               Category
             </h3>
             <input
-              required
-              className="text-white bg-transparent w-4/5 rounded-lg outline-none px-1 py-2 border-[2px] border-gray-500 mb-5"
+              // required
+              className="text-white bg-transparent w-4/5 rounded-lg outline-none px-1 py-2 border-[2px] border-stone-600 mb-5"
               type="text"
               placeholder="Design , Dev , etc."
               onChange={(e) => setCategory(e.target.value)}
@@ -90,7 +108,7 @@ const AdminDashForm = () => {
             Description
           </h3>
           <textarea
-            className="w-full h-60 text-base py-2 px-4 rounded-lg outline-none bg-transparent border-[2px] border-gray-500 "
+            className="w-full h-60 text-base py-2 px-4 rounded-lg outline-none bg-transparent border-[2px] border-stone-600 "
             name=""
             id=""
             onChange={(e) => setDescription(e.target.value)}
