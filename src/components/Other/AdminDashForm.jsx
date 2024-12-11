@@ -10,7 +10,7 @@ const AdminDashForm = () => {
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
   const [newTask, setNewTask] = useState([]);
-
+  
   const submitHandler = (e) => {
     e.preventDefault();
     setNewTask({
@@ -18,11 +18,11 @@ const AdminDashForm = () => {
       newTask: true,
       failed: false,
       completed: false,
-      title,
-      taskDate,
-      assignTo,
-      category,
-      description,
+      title: "",
+      taskDate: "",
+      assignTo: "",
+      category: "",
+      description: "",
     });
     // finding the employee from assigning form
     const data = JSON.parse(localStorage.getItem("EMPLOYEES"));
