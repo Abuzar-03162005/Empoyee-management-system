@@ -26,19 +26,28 @@ const AdminDashForm = () => {
     });
     // finding the employee from assigning form
     const data = JSON.parse(localStorage.getItem("EMPLOYEES"));
+    const employee = data.find((elem) => elem.firstName === assignTo);
+    console.log(employee);
 
-    data.forEach((elem) => {
-      if (assignTo == elem.firstName) {
-        elem.tasks.push(newTask);
-        console.log(elem);
-        // setting the form empty after the submittion of data
-        setTitle("");
-        setTaskDate("");
-        setAssignTo("");
-        setCategory("");
-        setDescription("");
-      }
-    });
+    if (employee) {
+      employee.tasks.push(newTask);
+      setTitle("");
+      setTaskDate("");
+      setAssignTo("");
+      setCategory("");
+      setDescription("");
+      toast.success(`Task Assigned Successfully to ${employee.firstName}`, {
+        duration: 4000,
+        style: {
+          fontFamily: "revert",
+          fontWeight: "500",
+        },
+      });
+    } else {
+      toast.error("Plese Correct The Employee Name", {
+        duration: 4000,
+      });
+    }
   };
   return (
     <div className="p-5 bg-[#1c1c1c] rounded-2xl mt-7">
@@ -57,7 +66,7 @@ const AdminDashForm = () => {
               Task Title
             </h3>
             <input
-              // required
+              required
               className="text-white bg-transparent w-4/5 rounded-lg outline-none px-1 py-2 border-[2px] border-stone-600 mb-5"
               type="text"
               placeholder="Make a UI for the dashboard"
@@ -68,7 +77,7 @@ const AdminDashForm = () => {
           <div>
             <h3 className="text-sm text-gray-300 mb-0.5 font-medium">Date</h3>
             <input
-              // required
+              required
               className="text-white bg-transparent w-4/5 rounded-lg outline-none px-1 py-2 border-[2px] border-stone-600 mb-5"
               type="date"
               onChange={(e) => setTaskDate(e.target.value)}
@@ -80,7 +89,7 @@ const AdminDashForm = () => {
               Assign To
             </h3>
             <input
-              // required
+              required
               className="text-white bg-transparent w-4/5 rounded-lg outline-none px-1 py-2 border-[2px] border-stone-600 mb-5"
               type="text"
               placeholder="Employee Name"
@@ -93,7 +102,7 @@ const AdminDashForm = () => {
               Category
             </h3>
             <input
-              // required
+              required
               className="text-white bg-transparent w-4/5 rounded-lg outline-none px-1 py-2 border-[2px] border-stone-600 mb-5"
               type="text"
               placeholder="Design , Dev , etc."
@@ -124,3 +133,24 @@ const AdminDashForm = () => {
 };
 
 export default AdminDashForm;
+
+// ANOTHER METHODE TO ASSIGN THE TASK TO THE EMPLOYEE IS BY USING THE SELECT TAG INSTEAD OF INPUT TAG
+// data.forEach((elem) => {
+//   if (assignTo == elem.firstName) {
+//     elem.tasks.push(newTask);
+//     // console.log(elem);
+//     // setting the form empty after the submittion of data
+//     setTitle("");
+//     setTaskDate("");
+//     setAssignTo("");
+//     setCategory("");
+//     setDescription("");
+//     toast.success(`Task Assigned Successfully to ${elem.firstName}`, {
+//       duration: 4000,
+//       style: {
+//         fontFamily: "revert",
+//         fontWeight: "500",
+//       },
+//     });
+//   }
+// });
