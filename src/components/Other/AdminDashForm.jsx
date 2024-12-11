@@ -9,33 +9,33 @@ const AdminDashForm = () => {
   const [assignTo, setAssignTo] = useState("");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
-  const [newTask, setNewTask] = useState([]);
-  
+  const [newTask, setNewTask] = useState({});
+
   const submitHandler = (e) => {
     e.preventDefault();
+    // console.log(title);
+    // console.log(taskDate);
+    // console.log(assignTo);
+    // console.log(category);
+    // console.log(description);
     setNewTask({
       active: false,
       newTask: true,
       failed: false,
       completed: false,
-      title: "",
-      taskDate: "",
-      assignTo: "",
-      category: "",
-      description: "",
+      title,
+      taskDate,
+      assignTo,
+      category,
+      description,
     });
     // finding the employee from assigning form
     const data = JSON.parse(localStorage.getItem("EMPLOYEES"));
     const employee = data.find((elem) => elem.firstName === assignTo);
-    console.log(employee);
 
     if (employee) {
       employee.tasks.push(newTask);
-      setTitle("");
-      setTaskDate("");
-      setAssignTo("");
-      setCategory("");
-      setDescription("");
+      console.log(employee);
       toast.success(`Task Assigned Successfully to ${employee.firstName}`, {
         duration: 4000,
         style: {
@@ -43,6 +43,11 @@ const AdminDashForm = () => {
           fontWeight: "500",
         },
       });
+      setTitle("");
+      setTaskDate("");
+      setAssignTo("");
+      setCategory("");
+      setDescription("");
     } else {
       toast.error("Plese Correct The Employee Name", {
         duration: 4000,
@@ -66,7 +71,7 @@ const AdminDashForm = () => {
               Task Title
             </h3>
             <input
-              required
+              // required
               className="text-white bg-transparent w-4/5 rounded-lg outline-none px-1 py-2 border-[2px] border-stone-600 mb-5"
               type="text"
               placeholder="Make a UI for the dashboard"
@@ -77,7 +82,7 @@ const AdminDashForm = () => {
           <div>
             <h3 className="text-sm text-gray-300 mb-0.5 font-medium">Date</h3>
             <input
-              required
+              // required
               className="text-white bg-transparent w-4/5 rounded-lg outline-none px-1 py-2 border-[2px] border-stone-600 mb-5"
               type="date"
               onChange={(e) => setTaskDate(e.target.value)}
@@ -89,7 +94,7 @@ const AdminDashForm = () => {
               Assign To
             </h3>
             <input
-              required
+              // required
               className="text-white bg-transparent w-4/5 rounded-lg outline-none px-1 py-2 border-[2px] border-stone-600 mb-5"
               type="text"
               placeholder="Employee Name"
@@ -102,7 +107,7 @@ const AdminDashForm = () => {
               Category
             </h3>
             <input
-              required
+              // required
               className="text-white bg-transparent w-4/5 rounded-lg outline-none px-1 py-2 border-[2px] border-stone-600 mb-5"
               type="text"
               placeholder="Design , Dev , etc."
