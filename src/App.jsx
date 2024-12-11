@@ -48,11 +48,14 @@ const App = () => {
       <Toaster />
       {/* doing the conditional rendering based on the user state */}
       {!user ? (
-        <Login handleLogin={handleLogin}  />
+        <Login handleLogin={handleLogin} />
       ) : user == "admin" ? (
-        <AdminDashboard />
+        <AdminDashboard changeUser={setUser} />
       ) : user == "employee" ? (
-        <EmployeeDashboard employeeData={loggedInUserData} />
+        <EmployeeDashboard
+          employeeData={loggedInUserData}
+          changeUser={setUser}
+        />
       ) : (
         ""
       )}

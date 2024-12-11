@@ -2,10 +2,9 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 
-const AdminHeader = ({data}) => {
+const AdminHeader = (props) => {
   const logOut = () => {
-    localStorage.setItem("loggedInUser","")
-    window.location.reload()
+    props.changeUser("")
   }
   return (
     <div className="flex justify-between items-end text-xl">
