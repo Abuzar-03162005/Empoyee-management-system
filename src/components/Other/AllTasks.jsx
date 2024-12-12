@@ -6,7 +6,7 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 
 const AllTasks = () => {
-  const authdata = useContext(AuthContext);
+  const userdata = useContext(AuthContext);
   return (
     <div className="alltasks bg-[#1c1c1c] px-5 pb-5 mt-5 mb-5 rounded-lg max-h-96 overflow-auto">
       <div className="flex justify-between items-center py-8 px-1 sticky top-0 bg-[#1c1c1c] h-10 text-xl font-semibold">
@@ -62,7 +62,7 @@ const AllTasks = () => {
         </h3>
       </div>
       <div className="*:text-[17px] *:font-semibold">
-        {authdata.employees.map((elem, idx) => {
+        {userdata.employees.map((elem, idx) => {
           return (
             <div className="flex justify-between border-2 border-stone-700 px-4 py-2 rounded-lg mb-2" key={idx}>
               <h2 className="w-[33%] text-start">{elem.firstName}</h2>

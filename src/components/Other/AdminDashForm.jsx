@@ -32,12 +32,12 @@ const AdminDashForm = () => {
     };
     // Find the employee to assign the task to
     const data = userData.employees;
-    console.log(data);
     const employee = data.find((elem) => elem.firstName === assignTo);
     // Check if the employee exists
     if (employee) {
       // Assign the task to the employee
       employee.tasks.push(newTask);
+      employee.taskCounts.newTask = employee.taskCounts.newTask + 1;
       console.log(employee);
       // Display a success toast notification
       toast.success(`Task Assigned Successfully to ${employee.firstName}`, {
@@ -80,7 +80,7 @@ const AdminDashForm = () => {
               Task Title
             </h3>
             <input
-              // required
+              required
               className="text-white bg-transparent w-4/5 rounded-lg outline-none px-1 py-2 border-[2px] border-stone-600 mb-5"
               type="text"
               placeholder="Make a UI for the dashboard"
@@ -91,7 +91,7 @@ const AdminDashForm = () => {
           <div>
             <h3 className="text-sm text-gray-300 mb-0.5 font-medium">Date</h3>
             <input
-              // required
+              required
               className="text-white bg-transparent w-4/5 rounded-lg outline-none px-1 py-2 border-[2px] border-stone-600 mb-5"
               type="date"
               onChange={(e) => setTaskDate(e.target.value)}
@@ -103,7 +103,7 @@ const AdminDashForm = () => {
               Assign To
             </h3>
             <input
-              // required
+              required
               className="text-white bg-transparent w-4/5 rounded-lg outline-none px-1 py-2 border-[2px] border-stone-600 mb-5"
               type="text"
               placeholder="Employee Name"
@@ -116,7 +116,7 @@ const AdminDashForm = () => {
               Category
             </h3>
             <input
-              // required
+              required
               className="text-white bg-transparent w-4/5 rounded-lg outline-none px-1 py-2 border-[2px] border-stone-600 mb-5"
               type="text"
               placeholder="Design , Dev , etc."
@@ -148,7 +148,7 @@ const AdminDashForm = () => {
 
 export default AdminDashForm;
 
-// ANOTHER METHODE TO ASSIGN THE TASK TO THE EMPLOYEE IS BY USING THE SELECT TAG INSTEAD OF INPUT TAG
+// ANOTHER METHODE TO ASSIGN THE TASK TO THE EMPLOYEE IS BY USING THE SELECT TAG INSTEAD OF INPUT TAG BUT IN THIS CASE YOU ARE UNABLE TO SHOW A ERROR MESSAGE CUZ IN FOREACH STATMENT IT WILL RUN FOR EACH EMPLOYEE SO IT WILL BE RUNING MULTIPUL TIMES SO TO ADD NOTIFICATION FUNCTIONALY YOU HAVE TO ADOPT THE ABOVE METHODE
 // data.forEach((elem) => {
 //   if (assignTo == elem.firstName) {
 //     elem.tasks.push(newTask);
