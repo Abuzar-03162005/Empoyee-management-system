@@ -1,24 +1,25 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { AuthContext } from "../../context/AuthProvider";
 
+// AdminDashForm component to handle task assignment
 const AdminDashForm = () => {
+  // State variables to store task details
   const [title, setTitle] = useState("");
   const [taskDate, setTaskDate] = useState("");
   const [assignTo, setAssignTo] = useState("");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
-  const [newTask, setNewTask] = useState({});
-
+  // Get user data from AuthContext
+  const userData = useContext(AuthContext);
+  // Function to handle form submission
   const submitHandler = (e) => {
+    // Prevent default form submission behavior
     e.preventDefault();
-    // console.log(title);
-    // console.log(taskDate);
-    // console.log(assignTo);
-    // console.log(category);
-    // console.log(description);
-    setNewTask({
+    // Create a new task object with task details
+    const newTask = {
       active: false,
       newTask: true,
       failed: false,
@@ -28,14 +29,17 @@ const AdminDashForm = () => {
       assignTo,
       category,
       description,
-    });
-    // finding the employee from assigning form
-    const data = JSON.parse(localStorage.getItem("EMPLOYEES"));
+    };
+    // Find the employee to assign the task to
+    const data = userData.employees;
+    console.log(data);
     const employee = data.find((elem) => elem.firstName === assignTo);
-
+    // Check if the employee exists
     if (employee) {
+      // Assign the task to the employee
       employee.tasks.push(newTask);
       console.log(employee);
+      // Display a success toast notification
       toast.success(`Task Assigned Successfully to ${employee.firstName}`, {
         duration: 4000,
         style: {
@@ -43,14 +47,19 @@ const AdminDashForm = () => {
           fontWeight: "500",
         },
       });
+      // Clear the form fields
       setTitle("");
       setTaskDate("");
       setAssignTo("");
       setCategory("");
       setDescription("");
     } else {
-      toast.error("Plese Correct The Employee Name", {
+      // Display an error toast notification if the employee does not exist
+      toast.error("Please Correct The Employee Name", {
         duration: 4000,
+        style: {
+          fontWeight: "600",
+        },
       });
     }
   };

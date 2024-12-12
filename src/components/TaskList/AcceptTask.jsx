@@ -3,7 +3,6 @@
 import React from "react";
 
 const AcceptTask = ({ data }) => {
-  console.log(data);
 
   return (
     <div className="singleEmployeeCard flex-shrink-0 p-5 h-full w-[24%] bg-green-700 rounded-xl overflow-auto">
